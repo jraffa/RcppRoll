@@ -576,13 +576,13 @@ template <>
 struct median_f<true> {
 
   inline double operator()(NumericVector x, int offset, int n) {
-    NumericVector x = na_omit(x);
-    n = Rf_length(x);
+    NumericVector y = na_omit(x);
+    n = Rf_length(y);
     std::vector<double> copied(n / 2 + 1);
    
     std::partial_sort_copy(
-      x.begin() + offset,
-      x.begin() + offset + n,
+      y.begin() + offset,
+      y.begin() + offset + n,
       copied.begin(),
       copied.begin() + n / 2 + 1
     );
