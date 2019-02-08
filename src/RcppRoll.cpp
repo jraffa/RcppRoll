@@ -577,7 +577,7 @@ struct median_f<true> {
 
   inline double operator()(NumericVector const& x, int offset, int n) {
     NumericVector y(na_omit(x));
-    n = Rf_length(y);
+    // n = Rf_length(y);
     std::vector<double> copied(n / 2 + 1);
    
     std::partial_sort_copy(
