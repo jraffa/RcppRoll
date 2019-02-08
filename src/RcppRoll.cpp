@@ -582,13 +582,13 @@ struct median_f<true> {
     double out = NA_REAL;
     
     std::partial_sort_copy(
-      y.begin() + offset,
-      y.begin() + offset + n,
+      x.begin() + offset,
+      x.begin() + offset + n,
       copied.begin(),
       copied.begin() + n / 2 + 1
     );
     NumericVector y(na_omit(copied));
-    n = y.size()
+    n = y.size();
     if(n==0) {
       return out;
     }
