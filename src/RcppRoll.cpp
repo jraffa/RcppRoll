@@ -575,7 +575,7 @@ struct median_f<false> {
 template <>
 struct median_f<true> {
 
-  inline double operator()(NumericVector x, int offset, int n) {
+  inline double operator()(NumericVector const& x, int offset, int n) {
     NumericVector y = na_omit(x);
     n = Rf_length(y);
     std::vector<double> copied(n / 2 + 1);
