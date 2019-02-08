@@ -579,7 +579,7 @@ struct median_f<true> {
     NumericVector y(na_omit(x));
     // n = Rf_length(y);
     std::vector<double> copied(n / 2 + 1);
-   
+    double out = NA_REAL;  
     std::partial_sort_copy(
       y.begin() + offset,
       y.begin() + offset + n,
@@ -588,9 +588,11 @@ struct median_f<true> {
     );
 
     if (n % 2 == 0) {
-      return (copied[n / 2 - 1] + copied[n / 2]) / 2;
+      out = (copied[n / 2 - 1] + copied[n / 2]) / 2;
+      return out;
     } else {
-      return copied[n / 2];
+      out = copied[n / 2];
+      return out;
     }
 
   }
