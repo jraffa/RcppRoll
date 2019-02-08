@@ -580,7 +580,8 @@ struct median_f<true> {
     // n = Rf_length(y);
     std::vector<double> copied(n / 2 + 1);
     double out = NA_REAL;
-    if( y.size() == 0) {
+    int q =  y.size();
+    if(q == 0) {
       return out;
     }
     std::partial_sort_copy(
